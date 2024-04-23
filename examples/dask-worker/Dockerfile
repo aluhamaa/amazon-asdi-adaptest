@@ -22,12 +22,13 @@ RUN mkdir -p "${CONDA_DIR}" && \
 RUN wget -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64
 RUN chmod +x /usr/local/bin/dumb-init
 
-# RUN micromamba install --root-prefix="${CONDA_DIR}" --prefix="${CONDA_DIR}" \
-#     -y -c conda-forge \
-#     python==3.7.10 \
-#     python-blosc==1.10.2 \
-#     dask==2021.8.1 \
-#     lz4==3.1.3 \
+RUN micromamba install --root-prefix="${CONDA_DIR}" --prefix="${CONDA_DIR}" \
+    -y -c conda-forge \
+    python==3.10.12 \
+    python-blosc==1.11.1 \
+    pip
+#    dask==2024.4.1 \
+#    lz4==3.1.3 \
 #     nomkl==1.0 \
 #     msgpack-python==1.0.2 \
 #     netcdf4==1.5.7 \
@@ -52,7 +53,7 @@ RUN chmod +x /usr/local/bin/dumb-init
 #     && find /opt/conda/lib/python*/site-packages/bokeh/server/static -type f,l -name '*.js' -not -name '*.min.js' -delete \
 #     && rm -rf /opt/conda/pkgs
 
-RUN pip install botocore==1.34.51 aiobotocore==2.12.2 boto3==1.34.51 rechunker==0.5.2 ipykernel==6.29.4 dask==2024.4.1 distributed==2024.4.1 tornado==6.4 cloudpickle==3.0.0 msgpack==1.0.8 blosc==1.11.1 numpy lz4==4.3.3 netcdf4==1.6.5 xarray==2023.10.1 s3fs==2024.3.1 fsspec==2024.3.1 h5netcdf==1.3.0 h5py==3.10.0 intake-esm==2024.2.6 intake==0.7.0 icclim==6.5.0 zarr==2.17.2
+RUN pip install botocore==1.34.51 aiobotocore==2.12.2 boto3==1.34.51 rechunker==0.5.2 ipykernel==6.29.4 dask==2024.4.1 distributed==2024.4.1 tornado==6.4 cloudpickle==3.0.0 msgpack==1.0.8 numpy lz4==4.3.3 netcdf4==1.6.5 xarray==2023.10.1 s3fs==2024.3.1 fsspec==2024.3.1 h5netcdf==1.3.0 h5py==3.10.0 intake-esm==2024.2.6 intake==0.7.0 icclim==6.5.0 zarr==2.17.2
 
 COPY prepare.sh /usr/bin/prepare.sh
 RUN chmod +x /usr/bin/prepare.sh
