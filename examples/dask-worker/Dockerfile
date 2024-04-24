@@ -24,7 +24,7 @@ RUN chmod +x /usr/local/bin/dumb-init
 
 RUN micromamba install --root-prefix="${CONDA_DIR}" --prefix="${CONDA_DIR}" \
     -y -c conda-forge \
-    python==3.10.12 \
+    python==3.12 \
     python-blosc==1.11.1 \
     pip \
     dask==2024.4.1 \
